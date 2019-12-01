@@ -16,5 +16,13 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": { "react/jsx-one-expression-per-line": "off" }
+  "rules": {
+    "react/jsx-one-expression-per-line": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ]
+  }
 }
