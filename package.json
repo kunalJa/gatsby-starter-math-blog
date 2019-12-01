@@ -4,9 +4,29 @@
   "version": "0.1.0",
   "author": "Kunal Jain <kunaljain@utexas.edu>",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "storybook"
   ],
   "license": "MIT",
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/kunalJa/gatsby-starter-math-blog"
+  },
+  "bugs": {
+    "url": "https://github.com/kunalJa/gatsby-starter-math-blog/issues"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -14,7 +34,9 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -c .storybook"
   },
   "dependencies": {
     "gatsby": "^2.17.11",
@@ -30,6 +52,12 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@storybook/addon-actions": "^5.2.7",
+    "@storybook/addon-links": "^5.2.7",
+    "@storybook/addons": "^5.2.7",
+    "@storybook/react": "^5.2.7",
+    "babel-loader": "^8.0.6",
     "eslint": "^6.7.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
@@ -38,12 +66,5 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "prettier": "^1.19.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kunalJa/gatsby-starter-math-blog"
-  },
-  "bugs": {
-    "url": "https://github.com/kunalJa/gatsby-starter-math-blog/issues"
   }
 }
