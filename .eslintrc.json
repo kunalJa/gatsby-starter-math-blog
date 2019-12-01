@@ -16,5 +16,5 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": {}
+  "rules": { "react/jsx-one-expression-per-line": "off" }
 }
