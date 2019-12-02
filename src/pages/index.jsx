@@ -14,7 +14,14 @@ const IndexPage = () => (
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <div className="flex flex-column">
+      <div>
+        <Link to="/page-2/">Go to page 2{`\n`}</Link>
+      </div>
+      <div>
+        <Link to="/page-3/">Go to page 3</Link>
+      </div>
+    </div>
   </Layout>
 )
 

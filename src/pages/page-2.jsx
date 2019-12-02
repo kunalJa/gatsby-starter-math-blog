@@ -9,7 +9,14 @@ const SecondPage = () => (
     <SEO title="Page two" />
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
+    <div className="flex flex-column">
+      <div>
+        <Link to="/">Go Home</Link>
+      </div>
+      <div>
+        <Link to="/page-3/">Go to page 3</Link>
+      </div>
+    </div>
   </Layout>
 )
 
