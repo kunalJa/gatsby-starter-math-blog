@@ -1,4 +1,5 @@
 const path = require(`path`)
+const remarkMath = require(`remark-math`)
 
 module.exports = {
   siteMetadata: {
@@ -34,7 +35,13 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
     },
-    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [`gatsby-remark-katex`],
+        remarkPlugins: [remarkMath],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-postcss`,
@@ -47,7 +54,7 @@ module.exports = {
         printRejected: true, // Print removed selectors and processed file names
         develop: true, // Enable while using `gatsby develop`
         // whitelist: ['whitelist'], // Don't remove this selector
-        // ignore: ['/ignored.css', 'prismjs/', 'docsearch.js/'], // Ignore files/folders
+        ignore: ["katex/dist/katex.min.css"], // Ignore files/folders
         // purgeOnly : ['components/', '/main.css', 'bootstrap/'],
       },
     },
