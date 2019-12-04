@@ -35,7 +35,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "NODE_ENV=test start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -c .storybook"
   },
   "dependencies": {
