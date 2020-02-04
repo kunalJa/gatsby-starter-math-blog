@@ -3,9 +3,24 @@ const remarkMath = require(`remark-math`)
 
 module.exports = {
   siteMetadata: {
+    /* General: */
     title: `Math Blog`,
     description: `The premier math blog starter for Gatsby.`,
     author: `@kunalja`,
+
+    /* Social links: */
+    github: `https://github.com/kunalJa/gatsby-starter-math-blog`,
+    linkedin: `https://www.linkedin.com`,
+    twitter: `https://www.twitter.com`,
+    // facebook: link,
+    // gatsby: link,
+    // imdb: link,
+    // reddit: link,
+    // skype: link,
+    // slack: link,
+    // spotify: link,
+    // telegram: link,
+    // whatsapp: link
   },
   plugins: [
     {
