@@ -28,7 +28,7 @@ const Navbar = ({ siteTitle }) => {
         </div>
         <div className="fr ml-auto">
           <div className="flex flex-row">
-            <Link to="/" className="no-underline white hover-light-red">About</Link>
+            <Link to="/about" className="no-underline white hover-light-red">About</Link>
             <p className="white mv0 mh2">
               |
             </p>
