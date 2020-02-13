@@ -67,7 +67,7 @@ module.exports = {
           path.join(process.cwd(), "src/**/!(*.d).{ts,js,jsx,tsx,md,mdx}"),
         ],
         printRejected: true, // Print removed selectors and processed file names
-        develop: true, // Enable while using `gatsby develop`
+        develop: false, // Enable while using `gatsby develop`
         // whitelist: ['whitelist'], // Don't remove this selector
         ignore: ["katex/dist/katex.min.css"], // Ignore files/folders
         // purgeOnly : ['components/', '/main.css', 'bootstrap/'],
