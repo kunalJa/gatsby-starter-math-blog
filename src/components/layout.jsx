@@ -24,25 +24,12 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <div className="vh-100">
       <header>
         <Navbar siteTitle={data.site.siteMetadata.title} />
       </header>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with{" "}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+      <main id="main">{children}</main>
+    </div>
   )
 }
 
