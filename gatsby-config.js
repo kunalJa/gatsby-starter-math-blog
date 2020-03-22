@@ -8,19 +8,20 @@ module.exports = {
     description: `The premier math blog starter for Gatsby.`,
     author: `@kunalja`,
 
-    /* Social links: */
-    facebook: 0,
-    gatsby: 0,
-    github: `https://github.com/kunalJa/gatsby-starter-math-blog`,
-    imdb: 0,
-    linkedin: `https://www.linkedin.com`,
-    reddit: 0,
-    slack: 0,
-    spotify: 0,
-    skype: 0,
-    twitter: `https://www.twitter.com`,
-    telegram: 0,
-    whatsapp: 0
+    socialLinks: {
+      facebook: 0,
+      gatsby: 0,
+      github: `https://github.com/kunalJa/gatsby-starter-math-blog`,
+      imdb: 0,
+      linkedin: `https://www.linkedin.com`,
+      reddit: 0,
+      slack: 0,
+      spotify: 0,
+      skype: 0,
+      twitter: `https://www.twitter.com`,
+      telegram: 0,
+      whatsapp: 0
+    }
   },
   plugins: [
     {
