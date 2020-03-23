@@ -22,7 +22,7 @@ SocialButton.propTypes = {
 SocialButton.defaultProps = {
   link: "/",
   fill: '#000',
-  width: '3rem',
+  width: '3em',
 }
 
 export default SocialButton
