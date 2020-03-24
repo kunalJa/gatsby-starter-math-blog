@@ -17,7 +17,7 @@ const IndexPage = ({ data: { allMdx, site } }) => {
   })
 
   return (
-    <Layout title={site.siteMetadata.title}>
+    <Layout title={site.siteMetadata.title} latestSlug={allMdx.edges[0].node.fields.slug}>
       <HeroBox
         siteTitle={site.siteMetadata.title}
         author={site.siteMetadata.author}
@@ -28,12 +28,6 @@ const IndexPage = ({ data: { allMdx, site } }) => {
       <section className="db center mw5 mw6-l mv4">
         <ul className="ma0 pa0">
           {allMdx.edges
-            .sort((a, b) => {
-              return (
-                new Date(a.node.frontmatter.date) <
-                new Date(b.node.frontmatter.date)
-              )
-            })
             .map(({ node }, id) => {
               return (
                 <li className="list mb4 dim" key={id}>
@@ -110,7 +104,7 @@ export const pageQuery = graphql`
       }
     }
 
-    allMdx {
+    allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
       edges {
         node {
           frontmatter {

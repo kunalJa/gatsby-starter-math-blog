@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import Navbar from "./navbar/navbar"
 import SEO from "./seo"
 
-const Layout = ({ children, title, noSEO }) => {
+const Layout = ({ children, title, noSEO, latestSlug }) => {
   return (
     <div className="vh-100">
       {() => {
@@ -14,7 +14,7 @@ const Layout = ({ children, title, noSEO }) => {
         return null
       }}
       <header>
-        <Navbar siteTitle={title} />
+        <Navbar siteTitle={title} latestSlug={latestSlug} />
       </header>
       <main id="main">{children}</main>
     </div>
@@ -22,6 +22,7 @@ const Layout = ({ children, title, noSEO }) => {
 }
 
 Layout.propTypes = {
+  latestSlug: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   noSEO: PropTypes.bool,

@@ -8,7 +8,7 @@ import SEO from "../seo"
 
 export default function BlogPost({ data: { allMdx, mdx, site } }) {
   return (
-    <Layout title={site.siteMetadata.title} noSEO>
+    <Layout title={site.siteMetadata.title} noSEO latestSlug={allMdx.edges[0].node.fields.slug}>
       <SEO
         title={mdx.frontmatter.title}
         description={mdx.frontmatter.description}
@@ -32,12 +32,6 @@ export default function BlogPost({ data: { allMdx, mdx, site } }) {
             <h1 className="f2 mb3">Recent Posts</h1>
             <ul className="ma0 pa0">
               {allMdx.edges
-                .sort((a, b) => {
-                  return (
-                    new Date(a.node.frontmatter.date) <
-                    new Date(b.node.frontmatter.date)
-                  )
-                })
                 .map(({ node }, id) => {
                   return (
                     <li className="list mb4" key={id}>
@@ -115,7 +109,7 @@ export const pageQuery = graphql`
       }
     }
 
-    allMdx(limit: 5) {
+    allMdx(limit: 5, sort: {fields: [frontmatter___date], order: DESC}) {
       edges {
         node {
           frontmatter {

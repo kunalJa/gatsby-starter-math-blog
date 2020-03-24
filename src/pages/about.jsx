@@ -6,9 +6,9 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const AboutPage = ({ data: { site, placeholderImage } }) => {
+const AboutPage = ({ data: { site, allMdx, placeholderImage } }) => {
   return (
-    <Layout title={site.siteMetadata.title} noSEO>
+    <Layout title={site.siteMetadata.title} noSEO latestSlug={allMdx.edges[0].node.fields.slug}>
       <SEO title="About" />
       <div className="flex flex-row-l flex-column w-75-l ml-auto mr-auto">
         <div className="flex flex-column ml-auto mr-auto mt5 mt6-l mr4-l">
@@ -43,6 +43,19 @@ AboutPage.propTypes = {
         title: PropTypes.string.isRequired,
       }).isRequired,
     }).isRequired,
+
+    allMdx: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+
     placeholderImage: PropTypes.shape({
       childImageSharp: PropTypes.shape({
         fluid: PropTypes.any.isRequired,
@@ -58,6 +71,16 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+
+    allMdx(limit: 1, sort: {fields: [frontmatter___date], order: DESC}) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
       }
     }
 
