@@ -22,7 +22,16 @@ const Navbar = ({ siteTitle }) => {
     <nav className="w-100 ma0 ph2 pb2 pt1 bg-dark-gray overflow-hidden f5 f4-ns">
       <div className="flex flex-row pa0 ma0">
         <div className="fl mr-auto">
-          <Link to="/" className="no-underline white  hover-light-red">
+          <Link
+            to="/"
+            className="no-underline white  hover-light-red"
+            style={
+              {
+                overflowWrap: "break-word",
+                wordWrap: "break-word",
+              }
+            }
+          >
             {title}
           </Link>
         </div>
