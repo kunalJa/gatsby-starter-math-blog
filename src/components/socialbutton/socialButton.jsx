@@ -7,7 +7,12 @@ import { icons } from "./icons"
 const SocialButton = ({ link, width, fill, socialEnum }) => {
   return (
     <a href={link}>
-      <SVG width={width} fill={fill} path={icons[socialEnum]} />
+      <SVG
+        className="grow"
+        width={width}
+        fill={fill}
+        path={icons[socialEnum]}
+      />
     </a>
   )
 }
@@ -21,8 +26,8 @@ SocialButton.propTypes = {
 
 SocialButton.defaultProps = {
   link: "/",
-  fill: '#000',
-  width: '3em',
+  fill: "#000",
+  width: "3em",
 }
 
 export default SocialButton
