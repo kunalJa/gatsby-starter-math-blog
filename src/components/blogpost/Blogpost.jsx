@@ -3,12 +3,16 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Navbar from "../navbar/navbar";
+import Layout from "../layout"
+import SEO from "../seo"
 
 export default function BlogPost({ data: { allMdx, mdx, site } }) {
   return (
-    <>
-      <Navbar siteTitle={site.siteMetadata.title} />
+    <Layout title={site.siteMetadata.title} noSEO>
+      <SEO
+        title={mdx.frontmatter.title}
+        description={mdx.frontmatter.description}
+      />
       <div className="relative">
         <div>
           <header className="white bg-light-red dn-l pa3">
@@ -44,7 +48,7 @@ export default function BlogPost({ data: { allMdx, mdx, site } }) {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 
