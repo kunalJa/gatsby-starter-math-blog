@@ -1,29 +1,22 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import PropTypes from "prop-types"
+import { graphql } from "gatsby"
 
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const AboutPage = () => {
-  const selfie = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "myface.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
+const AboutPage = ({ data: { site, placeholderImage } }) => {
   return (
-    <Layout>
+    <Layout title={site.siteMetadata.title} noSEO>
       <SEO title="About" />
       <div className="flex flex-row-l flex-column w-75-l ml-auto mr-auto">
         <div className="flex flex-column ml-auto mr-auto mt5 mt6-l mr4-l">
-          <Img className="w5 h5 br-100 bg-light-red mb3" fluid={selfie.placeholderImage.childImageSharp.fluid} alt="Picture of me" />
+          <Img
+            className="w5 h5 br-100 bg-light-red mb3"
+            fluid={placeholderImage.childImageSharp.fluid}
+            alt="Picture of me"
+          />
           <div className="w5 mt2 bg-light-red">
             <h2 className="white tc mv2 pa1 f2">Your Name</h2>
           </div>
@@ -43,4 +36,37 @@ const AboutPage = () => {
   )
 }
 
+AboutPage.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+    placeholderImage: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        fluid: PropTypes.any.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+}
+
 export default AboutPage
+
+export const pageQuery = graphql`
+  query AboutPageQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+
+    placeholderImage: file(relativePath: { eq: "myface.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`

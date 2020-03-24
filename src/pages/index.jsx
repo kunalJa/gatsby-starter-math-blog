@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from "react"
+import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -18,8 +18,7 @@ const IndexPage = ({ data: { allMdx, site } }) => {
   })
 
   return (
-    <Layout>
-      <SEO title="Home" />
+    <Layout title={site.siteMetadata.title}>
       <HeroBox
         siteTitle={site.siteMetadata.title}
         author={site.siteMetadata.author}
@@ -48,6 +47,35 @@ const IndexPage = ({ data: { allMdx, site } }) => {
       </section>
     </Layout>
   )
+}
+
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        socialLinks: PropTypes.any.isRequired,
+      }).isRequired,
+    }).isRequired,
+
+    allMdx: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            frontmatter: PropTypes.shape({
+              title: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              description: PropTypes.string.isRequired,
+            }).isRequired,
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default IndexPage

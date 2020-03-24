@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react"
+import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
@@ -52,6 +53,43 @@ export default function BlogPost({ data: { allMdx, mdx, site } }) {
   )
 }
 
+BlogPost.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+
+    mdx: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      body: PropTypes.any.isRequired,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+
+    allMdx: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            frontmatter: PropTypes.shape({
+              title: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              description: PropTypes.string.isRequired,
+            }).isRequired,
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }).isRequired,
+          }).isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
+  }).isRequired,
+}
+
 export const pageQuery = graphql`
   query BlogPostQuery($id: String) {
     site {
@@ -60,12 +98,13 @@ export const pageQuery = graphql`
       }
     }
 
-    mdx(id: {eq: $id }) {
+    mdx(id: { eq: $id }) {
       id
       body
       frontmatter {
         title
         date
+        description
       }
     }
 
