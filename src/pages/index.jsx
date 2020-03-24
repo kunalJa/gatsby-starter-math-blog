@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 import HeroBox from "../components/herobox/heroBox"
 
 const IndexPage = ({ data: { allMdx, site } }) => {
@@ -26,23 +25,30 @@ const IndexPage = ({ data: { allMdx, site } }) => {
         socialEnums={socialEnums}
       />
       <hr className="mw5 mv3" />
-      <section
-        className="db center mw5 mw6-l mv4"
-      >
+      <section className="db center mw5 mw6-l mv4">
         <ul className="ma0 pa0">
-          {allMdx.edges.sort((a, b) => {
-            return new Date(a.node.frontmatter.date) < new Date(b.node.frontmatter.date)
-          }).map(({ node }, id) => {
-            return (
-              <li className="list mb4 dim" key={id}>
-                <Link to={node.fields.slug} className="no-underline">
-                  <h2 className="f3 fw6 mv2 light-red">{node.frontmatter.title}</h2>
-                  <h4 className="f6 fw2 mv1 black">{node.frontmatter.date}</h4>
-                </Link>
-                <p className="f5 mt0">{node.frontmatter.description}</p>
-              </li>
-            )
-          })}
+          {allMdx.edges
+            .sort((a, b) => {
+              return (
+                new Date(a.node.frontmatter.date) <
+                new Date(b.node.frontmatter.date)
+              )
+            })
+            .map(({ node }, id) => {
+              return (
+                <li className="list mb4 dim" key={id}>
+                  <Link to={node.fields.slug} className="no-underline">
+                    <h2 className="f3 fw6 mv2 light-red">
+                      {node.frontmatter.title}
+                    </h2>
+                    <h4 className="f6 fw2 mv1 black">
+                      {node.frontmatter.date}
+                    </h4>
+                  </Link>
+                  <p className="f5 mt0">{node.frontmatter.description}</p>
+                </li>
+              )
+            })}
         </ul>
       </section>
     </Layout>

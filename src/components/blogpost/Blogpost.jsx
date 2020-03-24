@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from "react"
 import PropTypes from "prop-types"
 import { Link, graphql } from "gatsby"
@@ -32,19 +31,27 @@ export default function BlogPost({ data: { allMdx, mdx, site } }) {
           <div className="white bg-light-red pa3">
             <h1 className="f2 mb3">Recent Posts</h1>
             <ul className="ma0 pa0">
-              {allMdx.edges.sort((a, b) => {
-                return new Date(a.node.frontmatter.date) < new Date(b.node.frontmatter.date)
-              }).map(({ node }, id) => {
-                return (
-                  <li className="list mb4" key={id}>
-                    <Link to={node.fields.slug} className="no-underline hover-purple white">
-                      <h2 className="f5 fw6 mv1">{node.frontmatter.title}</h2>
-                      <h4 className="f6 fw2 mv1">{node.frontmatter.date}</h4>
-                    </Link>
-                    <p className="f6 mv1">{node.frontmatter.description}</p>
-                  </li>
-                )
-              })}
+              {allMdx.edges
+                .sort((a, b) => {
+                  return (
+                    new Date(a.node.frontmatter.date) <
+                    new Date(b.node.frontmatter.date)
+                  )
+                })
+                .map(({ node }, id) => {
+                  return (
+                    <li className="list mb4" key={id}>
+                      <Link
+                        to={node.fields.slug}
+                        className="no-underline dim white"
+                      >
+                        <h2 className="f5 fw6 mv1">{node.frontmatter.title}</h2>
+                        <h4 className="f6 fw2 mv1">{node.frontmatter.date}</h4>
+                        <p className="f6 mv1">{node.frontmatter.description}</p>
+                      </Link>
+                    </li>
+                  )
+                })}
             </ul>
           </div>
         </div>

@@ -8,8 +8,14 @@ import SEO from "../components/seo"
 const NotFoundPage = ({ data: { site } }) => (
   <Layout title={site.siteMetadata.title} noSEO>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <div className="tc f1 f-subheadline-l">
+      <h1>404 NOT FOUND</h1>
+      <p>
+        <span role="img" aria-label="Sad Face">
+          😢
+        </span>
+      </p>
+    </div>
   </Layout>
 )
 
