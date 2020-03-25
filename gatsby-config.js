@@ -15,13 +15,13 @@ module.exports = {
       imdb: 0,
       linkedin: `https://www.linkedin.com`,
       reddit: 0,
-      slack: 0,
-      spotify: 0,
       skype: 0,
-      twitter: `https://www.twitter.com`,
+      slack: 0,
+      spotify: `https://www.spotify.com`,
       telegram: 0,
-      whatsapp: 0
-    }
+      twitter: `https://www.twitter.com`,
+      whatsapp: 0,
+  },
   },
   plugins: [
     {

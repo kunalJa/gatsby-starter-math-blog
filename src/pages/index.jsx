@@ -17,7 +17,10 @@ const IndexPage = ({ data: { allMdx, site } }) => {
   })
 
   return (
-    <Layout title={site.siteMetadata.title} latestSlug={allMdx.edges[0].node.fields.slug}>
+    <Layout
+      title={site.siteMetadata.title}
+      latestSlug={allMdx.edges[0].node.fields.slug}
+    >
       <HeroBox
         siteTitle={site.siteMetadata.title}
         author={site.siteMetadata.author}
@@ -27,22 +30,19 @@ const IndexPage = ({ data: { allMdx, site } }) => {
       <hr className="mw5 mv3" />
       <section className="db center mw5 mw6-l mv4">
         <ul className="ma0 pa0">
-          {allMdx.edges
-            .map(({ node }, id) => {
-              return (
-                <li className="list mb4 dim" key={id}>
-                  <Link to={node.fields.slug} className="no-underline">
-                    <h2 className="f3 fw6 mv2 light-red">
-                      {node.frontmatter.title}
-                    </h2>
-                    <h4 className="f6 fw2 mv1 black">
-                      {node.frontmatter.date}
-                    </h4>
-                  </Link>
-                  <p className="f5 mt0">{node.frontmatter.description}</p>
-                </li>
-              )
-            })}
+          {allMdx.edges.map(({ node }, id) => {
+            return (
+              <li className="list mb4 dim" key={id}>
+                <Link to={node.fields.slug} className="no-underline">
+                  <h2 className="f3 fw6 mv2 light-red">
+                    {node.frontmatter.title}
+                  </h2>
+                  <h4 className="f6 fw2 mv1 black">{node.frontmatter.date}</h4>
+                </Link>
+                <p className="f5 mt0">{node.frontmatter.description}</p>
+              </li>
+            )
+          })}
         </ul>
       </section>
     </Layout>
@@ -94,9 +94,9 @@ export const pageQuery = graphql`
           imdb
           linkedin
           reddit
+          skype
           slack
           spotify
-          skype
           telegram
           twitter
           whatsapp
@@ -104,7 +104,7 @@ export const pageQuery = graphql`
       }
     }
 
-    allMdx(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           frontmatter {
