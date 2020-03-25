@@ -7,6 +7,7 @@ module.exports = {
     title: `Math Blog`,
     description: `The premier math blog starter for Gatsby.`,
     author: `@kunalja`,
+    personalDescription: `I am a student at the University of Texas. I am an aspriring software engineer hoping to enter the space of distributed system design and systems programming.`,
 
     socialLinks: {
       facebook: 0,
