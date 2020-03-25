@@ -24,16 +24,18 @@ const component = {
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className + " overflow-auto"} style={style}>
-            {tokens.map((line, i) => (
-              <div className="ma0 pa0" {...getLineProps({ line, key: i })}>
-                {line.map((token, key) => {
-                  if (key === line.length - 1) {
-                    return null
-                  }
-                  return <span {...getTokenProps({ token, key })} />
-                })}
-              </div>
-            ))}
+            {tokens.map((line, i) => {
+              if (i === tokens.length - 1) {
+                return null
+              }
+              return (
+                <div {...getLineProps({ line, key: i })}>
+                  {line.map((token, key) => {
+                    return <span {...getTokenProps({ token, key })} />
+                  })}
+                </div>
+              )
+            })}
           </pre>
         )}
       </Highlight>
