@@ -7,8 +7,8 @@ const SocialList = ({ width, fill, links, socialEnums }) => {
     <section className="mw5 center flex justify-around mv3">
       {socialEnums.map((socialEnum, id) => {
         return (
-          <div>
-            <SocialButton key={socialEnum} width={width} fill={fill} link={links[id]} socialEnum={socialEnum} />
+          <div key={socialEnum}>
+            <SocialButton width={width} fill={fill} link={links[id]} socialEnum={socialEnum} />
           </div>
         )
       })}
@@ -18,7 +18,7 @@ const SocialList = ({ width, fill, links, socialEnums }) => {
 
 SocialList.propTypes = {
   links: PropTypes.arrayOf(PropTypes.string).isRequired,
-  socialEnums: PropTypes.arrayOf(PropTypes.Number).isRequired,
+  socialEnums: PropTypes.arrayOf(PropTypes.number).isRequired,
   fill: PropTypes.string,
   width: PropTypes.string,
 }

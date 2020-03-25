@@ -7,12 +7,7 @@ import SEO from "./seo"
 const Layout = ({ children, title, noSEO, latestSlug }) => {
   return (
     <div className="vh-100">
-      {() => {
-        if (!noSEO) {
-          return <SEO title={title} />
-        }
-        return null
-      }}
+      {!noSEO && <SEO title={title} />}
       <header>
         <Navbar siteTitle={title} latestSlug={latestSlug} />
       </header>
