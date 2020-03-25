@@ -1,32 +1,57 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-/*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `useStaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
- *
- * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.dev/gatsby-image
- * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-const Image = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
+const useFluidImage = () => {
+  const images = useStaticQuery(graphql`
+    fragment FluidImage on File {
+      childImageSharp {
+        fluid(quality: 70, maxWidth: 800) {
+          ...GatsbyImageSharpFluid
         }
+      }
+    }
+    query {
+      favicon: file(relativePath: { eq: "icon.png" }) {
+        ...FluidImage
+      }
+
+      aboutHeadshot: file(relativePath: { eq: "myface.jpg" }) {
+        ...FluidImage
       }
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+  return images
+}
+
+const Image = ({ particularImage, className, alt }) => {
+  const images = useFluidImage()
+  let fluid
+  switch (particularImage) {
+    case "favicon":
+      fluid = images.favicon.childImageSharp.fluid
+      break
+    case "aboutHeadshot":
+      fluid = images.aboutHeadshot.childImageSharp.fluid
+      break
+    default:
+      return null
+  }
+
+  return <Img className={className} fluid={fluid} alt={alt} />
+}
+
+Image.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  particularImage: PropTypes.any.isRequired,
+  alt: PropTypes.string.isRequired,
+  className: PropTypes.string,
+}
+
+Image.defaultProps = {
+  className: ``
 }
 
 export default Image

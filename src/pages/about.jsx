@@ -2,11 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 
-import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Image from "../components/image"
 
-const AboutPage = ({ data: { site, allMdx, placeholderImage } }) => {
+const AboutPage = ({ data: { site, allMdx } }) => {
   return (
     <Layout
       title={site.siteMetadata.title}
@@ -16,9 +16,9 @@ const AboutPage = ({ data: { site, allMdx, placeholderImage } }) => {
       <SEO title="About" />
       <div className="flex flex-row-l flex-column w-75-l ml-auto mr-auto">
         <div className="flex flex-column ml-auto mr-auto mt5 mt6-l mr4-l">
-          <Img
+          <Image
             className="w5 h5 br-100 bg-light-red mb3"
-            fluid={placeholderImage.childImageSharp.fluid}
+            particularImage="aboutHeadshot"
             alt="Picture of me"
           />
           <div className="w5 mt2 bg-light-red">
@@ -57,12 +57,6 @@ AboutPage.propTypes = {
         }).isRequired
       ).isRequired,
     }).isRequired,
-
-    placeholderImage: PropTypes.shape({
-      childImageSharp: PropTypes.shape({
-        fluid: PropTypes.any.isRequired,
-      }).isRequired,
-    }).isRequired,
   }).isRequired,
 }
 
@@ -84,14 +78,6 @@ export const pageQuery = graphql`
           fields {
             slug
           }
-        }
-      }
-    }
-
-    placeholderImage: file(relativePath: { eq: "myface.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid
         }
       }
     }
