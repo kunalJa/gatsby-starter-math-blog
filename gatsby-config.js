@@ -55,6 +55,7 @@ module.exports = {
       options: {
         content: [
           path.join(process.cwd(), "src/**/!(*.d).{ts,js,jsx,tsx,md,mdx}"),
+          path.join(process.cwd(), "gatsby-browser.js"),
         ],
         printRejected: true, // Print removed selectors and processed file names
         develop: false, // Enable while using `gatsby develop`
