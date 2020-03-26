@@ -17,7 +17,7 @@ const AboutPage = ({ data: { site, allMdx } }) => {
       <div className="flex flex-row-l flex-column w-75-l ml-auto mr-auto">
         <div className="flex flex-column ml-auto mr-auto mt5 mt6-l mr4-l">
           <Image
-            className="w5 h5 br-100 bg-light-red mb3"
+            className="w5 h5 br-100 mb3"
             particularImage="aboutHeadshot"
             alt="Picture of me"
           />
