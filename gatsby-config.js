@@ -59,7 +59,7 @@ module.exports = {
         printRejected: true, // Print removed selectors and processed file names
         develop: false, // Enable while using `gatsby develop`
         // whitelist: ['whitelist'], // Don't remove this selector
-        // ignore: ["katex/dist/katex.min.css", "tachyons/css/tachyons.css"],
+        ignore: ["katex/dist/katex.min.css"],
         // purgeOnly : ['components/', '/main.css', 'bootstrap/'],
       },
     },
