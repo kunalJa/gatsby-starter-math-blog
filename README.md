@@ -29,7 +29,7 @@ Write and release your _important_ mathematical and technical findings with this
 + __Dynamic Configurations__ customizing your site's title, author, description, and social links!
 
 
-<img src="https://serene-ramanujan-285722.netlify.com/static/921021e3cb4d78fd49de59cf2a8f7f05/7b12c/herobox_example_1.png" alt="Display of custom configurations" width="256" />
+<img src="https://serene-ramanujan-285722.netlify.com/static/d0d8810c744f3b2fd298b80ed77dedc1/6e18f/herobox_example_1.png" alt="Display of custom configurations" width="256" />
 
 <p> Your website will change depending on the options you set in your `site.config.js` </p>
 
