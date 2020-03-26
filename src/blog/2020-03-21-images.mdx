@@ -1,0 +1,93 @@
+---
+title: Information About Gatsby-Images
+date: "2020-03-21"
+description: "Explaining how to utilize gatsby's \"fluid\" images."
+---
+import Image from "../components/image"
+
+Regular markdown images work as intended.
+For example:
+
+![Cat](https://images.unsplash.com/photo-1519052537078-e6302a4968d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)
+
+Further regular html images also work as intended.
+For example:
+
+<img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Cat" />
+
+<div className="mt5"/>
+
+In order to utilize Gatsby Image however, there is a bit of set up necessary for each image you include.
+
+For example, consider the image "myface.jpg"
+
+1. Put the image into src/images
+
+2. Edit the file src/components/image.jsx in the folowing way:
+
+>Add a graphql query for the image with whatever name you want. In this case I used the name "aboutHeadshot".
+```js
+//src/components/image.jsx
+//...
+const useFluidImage = () => {
+  const images = useStaticQuery(graphql`
+    fragment FluidImage on File {
+      childImageSharp {
+        fluid(quality: 70, maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    query {
+      favicon: file(relativePath: { eq: "icon.png" }) {
+        ...FluidImage
+      }
++     aboutHeadshot: file(relativePath: {eq: "myface.jpg" }) {
++       ...FluidImage
++     }
+    }
+  return images;
+}
+```
+
+>Then add a case statement to the Image component to grab that particular image.
+```js
+//src/components/image.js
+//...
+const Image = ({ particularImage, className, alt }) => {
+  const images = useFluidImage()
+  let fluid
+  switch (particularImage) {
+    case "favicon":
+      fluid = images.favicon.childImageSharp.fluid
+      break
++   case "aboutHeadshot":
++     fluid = images.aboutHeadshot.childImageSharp.fluid
++     break
+    default:
+      return null
+  }
+  return <Img className={className} fluid={fluid} alt={alt} />
+}
+```
+
+3. Begin using the image in your Blog
+
+>```js
+//src/blog/anyfile.mdx
+//...
+import Image from "../components/image"
+<Image particularImage="aboutHeadshot" className="mw5" alt="My headshot"/>
+```
+
+4. Profit??
+
+>This procedure will result in the following image:
+<Image particularImage="aboutHeadshot" className="mw5" alt="My headshot"/>
+
+<div className="mt5"/>
+
+## More Information
+To learn more about Gatsby-Image check out https://www.gatsbyjs.org/docs/using-gatsby-image/
+
+Further, if you know of a better way to go about implemnting this feature in this blog, let me know at https://www.github.com/kunalja/gatsby-starter-math-blog/issues

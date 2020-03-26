@@ -1,0 +1,143 @@
+---
+title: "Site Information and Guide"
+date: "2020-03-24"
+description: "A comprehensive guide that displays the starter's features and explains how to extend and modify them."
+---
+import Image from "../components/image"
+import Counter from "../components/counter/counter"
+
+<Image particularImage="favicon" className="mw3 center" alt="Light red circle"/>
+<h1 className="tc">@kunalja's math blog starter</h1>
+<hr className="b--near-white" />
+
+[![GitHub issues](https://img.shields.io/github/issues/kunalja/gatsby-starter-math-blog?style=for-the-badge)](https://www.github.com/kunalja/gatsby-starter-math-blog/issues)
+![GitHub stars](https://img.shields.io/github/stars/kunalja/gatsby-starter-math-blog?style=for-the-badge)
+[![Styled with tachyons](https://img.shields.io/badge/styled%20with-tachyons-9cf?style=for-the-badge)](https://tachyons.io)
+[![Designed with storybook](https://img.shields.io/badge/Designed%20with-storybook-ff69b4?style=for-the-badge)](https://storybook.js.org)
+
+Write and release your _important_ mathematical and technical findings with this blog boilerplate. This starter is built with [Gatsby](https://www.gatsbyjs.org), a blazing fast app generator for React.
+
+&ensp;
+&ensp;
+
+## ✨ Features
+
++ __Responsive__ - utilizing tachyons, this site was built mobile first!
+
++ __[MDX](https://mdxjs.com)__ - allowing you to utilize hydrated React components in Markdown!
+> Check out this interactive counter component:
+<Counter />
+
++ __[Latex](https://katex.org)__ - with both inline and block options with the \`$\` key word.
+> For example: \$a^2 + b^2 = c^2\$ &nbsp; becomes &nbsp; $a^2 + b^2 = c^2$
+
++ __Code Syntax Highlighting__ - allowing you to communicate about software with specificity and clarity.
+> ```cpp
+  #include <iostream>
+  int main() {
+      std::cout << "Hello World!";
+      return 0;
+  }
+  ```
+
++ __Dynamic Configurations__ customizing your site's title, author, description, and social links!
+
+> <Image particularImage="hero1" className="pa0 ml4 mw5" alt="Display of custom configurations"/>
+
+> <p> Your website will change depending on the options you set in your `site.config.js` </p>
+
+> <Image particularImage="hero2" className="pa0 ml4 mw5" alt="Display of custom configurations"/>
+
+
+## 🚀 Get Started
+
+1.  **Install Gatsby.**
+
+  Install the gatsby cli via npm.
+
+  ```shell
+  npm install -g gatsby-cli
+  ```
+
+2.  **Create a Gatsby site.**
+
+  Use the Gatsby CLI to create a new site, specifying the blog starter.
+
+  ```shell
+  gatsby new math-blog-starter https://github.com/kunalja/gatsby-starter-math-blog
+  ```
+
+3.  **Start developing.**
+
+  Navigate into your new site’s directory and start it up.
+
+  ```shell
+  cd math-blog/
+  npm run develop
+  ```
+
+4.  **See the development server live!**
+
+  Your site is now running at `http://localhost:8000`!
+
+5. **Configure your site.**
+
+  ```js
+  //site.config.js
+  module.exports = {
+    title: `M@th B|og`,
+    description: `The premier math blog starter for Gatsby.`,
+    author: `@kunalja`,
+    personalDescription: `I am a student at the University of Texas.`,
+
+    //Add your links to these websites or put a 0 if you don't use those sites
+    //Do not add or remove any sites (unless you are willing to modify the grapql in pages/index.js)
+    socialLinks: {
+      facebook: 0,
+      gatsby: 0,
+      github: `https://github.com/kunalJa/gatsby-starter-math-blog`,
+      imdb: 0,
+      linkedin: `https://www.linkedin.com/in/kunalja`,
+      reddit: 0,
+      skype: 0,
+      slack: 0,
+      spotify: 0,
+      telegram: 0,
+      twitter: 0,
+      whatsapp: 0,
+    }
+  }
+  ```
+
+6.  **Write new posts.**
+
+  Navigate to the `blog` folder and create new .mdx files for each new post you make.
+
+  ```shell
+  cd blog/
+  # Windows cmd
+  type NUL >> 2020-03-25-my-first-post.mdx
+  # Unix zsh or bash
+  touch 2020-03-25-my-first-post.mdx
+  ```
+
+  Make sure you include valid frontmatter with the fields _title_, _date_, and _description_.
+
+  ```Markdown
+  ---
+  title: "My first post"
+  date: "2020-03-25"
+  description: "This post is my first and probably my last"
+  ---
+
+  # My first post!
+
+  this is an example of a post one might make.
+  ```
+
+  Save your changes and the site will update in real time!
+
+## 🐞 Bugs or Questions?
+>Please send them my way at [gatsby-starter-math-blog/issues](https://www.github.com/kunalja/gatsby-starter-math-blog/issues)
+
+## 💖 Thank you for checking this starter out

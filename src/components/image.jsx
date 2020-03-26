@@ -20,6 +20,18 @@ const useFluidImage = () => {
       aboutHeadshot: file(relativePath: { eq: "myface.jpg" }) {
         ...FluidImage
       }
+
+      hero1: file(relativePath: { eq: "herobox_example_1.png" }) {
+        ...FluidImage
+      }
+
+      hero2: file(relativePath: { eq: "herobox_example_2.png" }) {
+        ...FluidImage
+      }
+
+      moscow: file(relativePath: { eq: "pixabay_moscow.jpg" }) {
+        ...FluidImage
+      }
     }
   `)
 
@@ -35,6 +47,15 @@ const Image = ({ particularImage, className, alt }) => {
       break
     case "aboutHeadshot":
       fluid = images.aboutHeadshot.childImageSharp.fluid
+      break
+    case "hero1":
+      fluid = images.hero1.childImageSharp.fluid
+      break
+    case "hero2":
+      fluid = images.hero2.childImageSharp.fluid
+      break
+    case "moscow":
+      fluid = images.moscow.childImageSharp.fluid
       break
     default:
       return null
