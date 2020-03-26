@@ -1,14 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const SVG = ({
-  path,
-  fill,
-  width,
-  className,
-  height,
-  viewBox,
-}) => {
+const SVG = ({ path, fill, width, className, height, viewBox }) => {
   return (
     <svg
       width={width}
@@ -29,15 +22,15 @@ SVG.propTypes = {
   width: PropTypes.string,
   className: PropTypes.string,
   height: PropTypes.string,
-  viewBox: PropTypes.string
+  viewBox: PropTypes.string,
 }
 
 SVG.defaultProps = {
-  fill: '#fff',
-  width: '100%',
-  className: '',
-  height: '100%',
-  viewBox: '0 0 24 24'
+  fill: "#fff",
+  width: "100%",
+  className: "",
+  height: "100%",
+  viewBox: "0 0 24 24",
 }
 
 export default SVG

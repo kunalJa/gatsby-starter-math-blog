@@ -6,7 +6,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const NotFoundPage = ({ data: { site, allMdx } }) => (
-  <Layout title={site.siteMetadata.title} noSEO latestSlug={allMdx.edges[0].node.fields.slug}>
+  <Layout
+    title={site.siteMetadata.title}
+    noSEO
+    latestSlug={allMdx.edges[0].node.fields.slug}
+  >
     <SEO title="404: Not found" />
     <div className="tc f1 f-subheadline-l">
       <h1>404 NOT FOUND</h1>
@@ -51,7 +55,7 @@ export const pageQuery = graphql`
       }
     }
 
-    allMdx(limit: 1, sort: {fields: [frontmatter___date], order: DESC}) {
+    allMdx(limit: 1, sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           fields {

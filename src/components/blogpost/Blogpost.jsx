@@ -8,7 +8,11 @@ import SEO from "../seo"
 
 export default function BlogPost({ data: { allMdx, mdx, site } }) {
   return (
-    <Layout title={site.siteMetadata.title} noSEO latestSlug={allMdx.edges[0].node.fields.slug}>
+    <Layout
+      title={site.siteMetadata.title}
+      noSEO
+      latestSlug={allMdx.edges[0].node.fields.slug}
+    >
       <SEO
         title={mdx.frontmatter.title}
         description={mdx.frontmatter.description}
@@ -31,21 +35,20 @@ export default function BlogPost({ data: { allMdx, mdx, site } }) {
           <div className="white bg-light-red pa3">
             <h1 className="f2 mb3">Recent Posts</h1>
             <ul className="ma0 pa0">
-              {allMdx.edges
-                .map(({ node }, id) => {
-                  return (
-                    <li className="list mb4" key={id}>
-                      <Link
-                        to={node.fields.slug}
-                        className="no-underline dim white"
-                      >
-                        <h2 className="f5 fw6 mv1">{node.frontmatter.title}</h2>
-                        <h4 className="f6 fw2 mv1">{node.frontmatter.date}</h4>
-                        <p className="f6 mv1">{node.frontmatter.description}</p>
-                      </Link>
-                    </li>
-                  )
-                })}
+              {allMdx.edges.map(({ node }, id) => {
+                return (
+                  <li className="list mb4" key={id}>
+                    <Link
+                      to={node.fields.slug}
+                      className="no-underline dim white"
+                    >
+                      <h2 className="f5 fw6 mv1">{node.frontmatter.title}</h2>
+                      <h4 className="f6 fw2 mv1">{node.frontmatter.date}</h4>
+                      <p className="f6 mv1">{node.frontmatter.description}</p>
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         </div>
@@ -109,7 +112,7 @@ export const pageQuery = graphql`
       }
     }
 
-    allMdx(limit: 5, sort: {fields: [frontmatter___date], order: DESC}) {
+    allMdx(limit: 5, sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           frontmatter {

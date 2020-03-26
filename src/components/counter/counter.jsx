@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
 const Counter = () => {
   const [count, setCount] = useState(0)
@@ -7,7 +7,11 @@ const Counter = () => {
 
   return (
     <>
-      <button type="button" onClick={handleClick} className="f6 link ph3 pv2 mb2 dib">
+      <button
+        type="button"
+        onClick={handleClick}
+        className="f6 link ph3 pv2 mb2 dib"
+      >
         Count: {count}
       </button>
     </>

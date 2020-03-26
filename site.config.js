@@ -17,5 +17,5 @@ module.exports = {
     telegram: 0,
     twitter: 0,
     whatsapp: 0,
-  }
+  },
 }

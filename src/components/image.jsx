@@ -72,7 +72,7 @@ Image.propTypes = {
 }
 
 Image.defaultProps = {
-  className: ``
+  className: ``,
 }
 
 export default Image

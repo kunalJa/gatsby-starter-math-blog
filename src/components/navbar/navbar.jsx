@@ -10,23 +10,26 @@ const Navbar = ({ siteTitle, latestSlug }) => {
           <Link
             to="/"
             className="no-underline white  hover-light-red"
-            style={
-              {
-                overflowWrap: "break-word",
-                wordWrap: "break-word",
-              }
-            }
+            style={{
+              overflowWrap: "break-word",
+              wordWrap: "break-word",
+            }}
           >
             {siteTitle}
           </Link>
         </div>
         <div className="fr ml-auto">
           <div className="flex flex-row">
-            <Link to="/about" className="no-underline white hover-light-red">About</Link>
-            <p className="white mv0 mh2">
-              |
-            </p>
-            <Link to={latestSlug} className="no-underline white hover-light-red">Latest Post</Link>
+            <Link to="/about" className="no-underline white hover-light-red">
+              About
+            </Link>
+            <p className="white mv0 mh2">|</p>
+            <Link
+              to={latestSlug}
+              className="no-underline white hover-light-red"
+            >
+              Latest Post
+            </Link>
           </div>
         </div>
       </div>

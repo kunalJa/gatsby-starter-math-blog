@@ -8,7 +8,12 @@ const SocialList = ({ width, fill, links, socialEnums }) => {
       {socialEnums.map((socialEnum, id) => {
         return (
           <div key={socialEnum}>
-            <SocialButton width={width} fill={fill} link={links[id]} socialEnum={socialEnum} />
+            <SocialButton
+              width={width}
+              fill={fill}
+              link={links[id]}
+              socialEnum={socialEnum}
+            />
           </div>
         )
       })}
